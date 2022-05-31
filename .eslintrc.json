@@ -46,18 +46,7 @@
       "rules": {
         // NOTE: WE ARE OVERRIDING THE DEFAULT CONFIG TO ALWAYS SET THE PARSER TO ANGULAR (SEE BELOW)
         "prettier/prettier": ["error", {
-          "parser": "angular" ,
-          "tabWidth": 2,
-          "useTabs": false,
-          "endOfLine": "auto",
-          "singleQuote": true,
-          "semi": true,
-          "bracketSpacing": true,
-          "arrowParens": "avoid",
-          "trailingComma": "es5",
-          "bracketSameLine": true,
-          "printWidth": 60
-
+          "parser": "angular"
           }]
       }
     }
