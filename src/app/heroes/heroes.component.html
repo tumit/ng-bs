@@ -8,3 +8,24 @@
     {{ hero.name }}
   </a>
 </ul>
+
+<hr />
+
+<h6>Optional Parameters</h6>
+<a
+  [routerLink]="[
+    'hero-form',
+    11,
+    { color: 'red', disable: true }
+  ]">
+  Dr. Nice with Red
+</a>
+
+<hr />
+
+<h6>Query Parameters</h6>
+<a
+  [routerLink]="['hero-form', 12]"
+  [queryParams]="{ color: 'blue', disable: false }">
+  Bombasto with Blue
+</a>

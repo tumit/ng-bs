@@ -21,6 +21,8 @@ export class HeroFormComponent implements OnInit {
     combatPower: this.combatPower,
   });
 
+  color?: string | null;
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -28,28 +30,49 @@ export class HeroFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // sync
-    // const id = Number(
-    //   this.route.snapshot.paramMap.get('id')!
-    // );
-    // if (id) {
-    //   this.heroService
-    //     .getHero(id)
-    //     .subscribe(h => this.heroForm.patchValue(h));
-    // }
+    // id from required param
+    const id = Number(
+      this.route.snapshot.paramMap.get('id')!
+    );
+
+    if (id) {
+      this.heroService
+        .getHero(id)
+        .subscribe(h => this.heroForm.patchValue(h));
+    }
+
+    // color from optional params
+    let color = this.route.snapshot.paramMap.get('color');
+    if (color) {
+      this.color = color;
+    }
+
+    // color form query params
+    color = this.route.snapshot.queryParamMap.get('color');
+    if (color) {
+      this.color = color;
+    }
 
     // async
-    this.route.params
-      .pipe(
-        switchMap(params =>
-          this.heroService.getHero(Number(params['id']))
-        ),
-        filter(hero => !!hero)
-      )
-      .subscribe(hero => this.heroForm.patchValue(hero));
+    // this.route.params
+    //   .pipe(
+    //     switchMap(params =>
+    //       this.heroService.getHero(Number(params['id']))
+    //     ),
+    //     filter(hero => !!hero)
+    //   )
+    //   .subscribe(hero => this.heroForm.patchValue(hero));
   }
 
   goBack() {
     this.location.back();
   }
+}
+function tab(
+  arg0: (params: any) => void
+): import('rxjs').OperatorFunction<
+  import('@angular/router').Params,
+  unknown
+> {
+  throw new Error('Function not implemented.');
 }

@@ -1,6 +1,8 @@
 <p>hero-form works!</p>
 <hr />
-{{ heroForm.value | json }}
+<span [ngStyle]="{ color: color ? color : 'black' }">
+  {{ heroForm.value | json }}
+</span>
 <hr />
 <button class="btn btn-secondary" (click)="goBack()">
   Back

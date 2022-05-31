@@ -17,6 +17,6 @@ export class HeroService {
   }
 
   getHeroes(): Observable<Hero[]> {
-    return of(HEROES);
+    return of(HEROES.slice(6, 20));
   }
 }
