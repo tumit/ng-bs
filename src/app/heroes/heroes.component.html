@@ -1,1 +1,10 @@
 <p>heroes works!</p>
+
+<ul class="list-group">
+  <a
+    class="list-group-item list-group-item-action"
+    *ngFor="let hero of heroes$ | async"
+    [routerLink]="['hero-form', hero.id]">
+    {{ hero.name }}
+  </a>
+</ul>
