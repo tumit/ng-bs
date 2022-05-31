@@ -6,7 +6,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    DashboardComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

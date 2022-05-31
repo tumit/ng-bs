@@ -1,4 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RoutingAndNavigationComponent } from './routing-and-navigation.component';
 
@@ -14,7 +17,9 @@ describe('RoutingAndNavigationComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoutingAndNavigationComponent);
+    fixture = TestBed.createComponent(
+      RoutingAndNavigationComponent
+    );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
