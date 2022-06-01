@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { CustomPreloadingStrategy } from './preloading/custom.preloading';
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -11,6 +12,15 @@ export const routes: Routes = [
       import('./heroes/hero.module').then(
         m => m.HeroModule
       ),
+    data: { preload: true, delay: 5000 },
+  },
+  {
+    path: 'items',
+    loadChildren: () =>
+      import('./items/items.module').then(
+        m => m.ItemsModule
+      ),
+    data: { preload: true, delay: 10000 },
   },
   {
     path: 'demo',
@@ -22,8 +32,12 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  providers: [CustomPreloadingStrategy],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: CustomPreloadingStrategy,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

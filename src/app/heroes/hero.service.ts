@@ -7,7 +7,9 @@ import { HEROES } from './mock-heroes';
   providedIn: 'root',
 })
 export class HeroService {
-  constructor() {}
+  constructor() {
+    console.log('HeroService');
+  }
 
   getHero(id: number): Observable<Hero> {
     console.log('id', id);
