@@ -33,7 +33,23 @@
         Items
       </a>
     </li>
+    <li *ngIf="!authService.isLoggedIn" class="nav-item">
+      <a
+        class="nav-link"
+        routerLink="/auth/login"
+        routerLinkActive="active">
+        Login
+      </a>
+    </li>
+    <li *ngIf="authService.isLoggedIn" class="nav-item">
+      <a class="nav-link" (click)="authService.logout()">
+        Logout
+      </a>
+    </li>
   </ul>
   <hr />
   <router-outlet></router-outlet>
 </div>
+
+<br />
+{{ authService.isLoggedIn }} | {{ authService.redirectURL }}

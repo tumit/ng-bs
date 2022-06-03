@@ -3,13 +3,9 @@ import { PreloadingStrategy, Route } from '@angular/router';
 import { mergeMap, Observable, of, timer } from 'rxjs';
 
 @Injectable()
-export class CustomPreloadingStrategy
+export class AppPreloadingStrategy
   implements PreloadingStrategy
 {
-  constructor() {
-    console.log('CustomPreloadingStrategy');
-  }
-
   preload(
     route: Route,
     load: () => Observable<any>
