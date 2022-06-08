@@ -12,7 +12,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     DashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

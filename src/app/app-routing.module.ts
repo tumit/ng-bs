@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthGuard } from './auth/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AppPreloadingStrategy } from './preloading/app-preloading.service';
@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   {
     path: 'heroes',
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./heroes/hero.module').then(
         m => m.HeroModule
@@ -28,7 +28,7 @@ export const routes: Routes = [
       import('./items/items.module').then(
         m => m.ItemsModule
       ),
-    data: { preload: true, delay: 10000 },
+    data: { preload: true, delay: 100 },
   },
   {
     path: 'demo',

@@ -5,6 +5,7 @@ import { ItemsComponent } from './items.component';
 
 import { ItemViewComponent } from './item-view/item-view.component';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { ItemGuard } from './item.guard';
 
 @NgModule({
   declarations: [
@@ -13,5 +14,6 @@ import { ItemFormComponent } from './item-form/item-form.component';
     ItemViewComponent,
   ],
   imports: [CommonModule, ItemsRoutingModule],
+  providers: [ItemGuard],
 })
 export class ItemsModule {}
