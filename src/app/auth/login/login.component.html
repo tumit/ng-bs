@@ -11,9 +11,17 @@
     type="password"
     id="password"
     formControlName="password" />
-  <button class="btn btn-primary my-2" type="submit">
-    Login
-  </button>
+  <div class="d-flex">
+    <button class="btn btn-primary m-2" type="submit">
+      Login
+    </button>
+    <button
+      class="btn btn-secondary m-2"
+      type="button"
+      (click)="onReset()">
+      Reset
+    </button>
+  </div>
 </form>
 <hr />
 {{ loginForm.value | json }}

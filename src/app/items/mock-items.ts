@@ -1,6 +1,6 @@
 import { Item } from './item';
 
-const ITEMS: Item[] = [
+export const ITEMS: Item[] = [
   { id: 101, name: 'Apple', description: 'recharge HP' },
   {
     id: 102,
@@ -10,11 +10,11 @@ const ITEMS: Item[] = [
   {
     id: 103,
     name: 'Sword',
-    description: 'increasing attack',
+    description: 'increase attack',
   },
   {
     id: 104,
     name: 'Boots',
-    description: 'increasing speed',
+    description: 'increase speed',
   },
 ];

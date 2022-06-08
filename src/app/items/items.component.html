@@ -1,2 +1,12 @@
 <p>items works!</p>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let item of items$ | async">
+    {{ item.name }}
+    <i
+      class="bi bi-pencil-square"
+      (click)="gotoEdit(item)"></i>
+  </li>
+</ul>
 <router-outlet></router-outlet>

@@ -103,8 +103,10 @@
       }
     }
   },
-  "defaultProject": "ng-bs",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": "f9529ca6-dbe8-4b51-bfc6-f0dd44d710cb"
   }
 }

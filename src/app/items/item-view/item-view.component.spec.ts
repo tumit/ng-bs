@@ -1,4 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+} from '@angular/core/testing';
 
 import { ItemViewComponent } from './item-view.component';
 
@@ -8,9 +11,8 @@ describe('ItemViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemViewComponent ]
-    })
-    .compileComponents();
+      declarations: [ItemViewComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

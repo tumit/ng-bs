@@ -10,18 +10,18 @@ export class AppPreloadingStrategy
     route: Route,
     load: () => Observable<any>
   ): Observable<any> {
-    console.log('preload ', route);
+    // console.log('preload ', route);
     if (route.data && route.data['preload']) {
       let delay: number = route.data['delay'];
-      console.log(
-        'preload called on ' +
-          route.path +
-          ' delay in ' +
-          delay
-      );
+      // console.log(
+      //   'preload called on ' +
+      //     route.path +
+      //     ' delay in ' +
+      //     delay
+      // );
       return timer(delay).pipe(
         mergeMap(_ => {
-          console.log('Loading now ' + route.path);
+          // console.log('Loading now ' + route.path);
           return load();
         })
       );

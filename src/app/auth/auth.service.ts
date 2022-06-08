@@ -51,8 +51,8 @@ export class AuthService {
   }
 
   login(loginForm: {
-    username: string;
-    password: string;
+    username?: string;
+    password?: string;
   }): Observable<User> {
     if (loginForm.username !== loginForm.password) {
       return throwError(() => ({
@@ -62,7 +62,7 @@ export class AuthService {
     }
 
     this.isLoggedIn = true;
-    const roles = loginForm.username.includes('admin')
+    const roles = loginForm.username?.includes('admin')
       ? ['ADMIN']
       : ['USER'];
 
