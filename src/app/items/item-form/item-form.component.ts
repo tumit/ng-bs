@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NonNullableFormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Item } from '../item';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-item-form',
@@ -6,7 +10,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-form.component.scss'],
 })
 export class ItemFormComponent implements OnInit {
-  constructor() {}
+  itemForm = this.fb.group<Item>({
+    id: null,
+    name: '',
+    description: '',
+  });
 
-  ngOnInit(): void {}
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private route: ActivatedRoute,
+    private itemService: ItemService
+  ) {}
+
+  ngOnInit(): void {
+    const id = Number(
+      this.route.snapshot.paramMap.get('id')!
+    );
+
+    this.itemService
+      .getItem(id)
+      .subscribe(item => this.itemForm.setValue(item));
+  }
+
+  onSave(item: Item) {
+    console.log('item', item);
+  }
 }

@@ -1,8 +1,14 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { filter, switchMap } from 'rxjs';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter, Observable, of, switchMap } from 'rxjs';
+import { CanComponentDeactive } from 'src/app/guards/can-component-deactive';
+import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -10,30 +16,31 @@ import { HeroService } from '../hero.service';
   templateUrl: './hero-form.component.html',
   styleUrls: ['./hero-form.component.scss'],
 })
-export class HeroFormComponent implements OnInit {
-  id = new FormControl();
-  name = new FormControl();
-  combatPower = new FormControl();
+export class HeroFormComponent
+  implements OnInit, CanComponentDeactive
+{
+  isSubmitted = false;
 
-  heroForm = new FormGroup({
-    id: this.id,
-    name: this.name,
-    combatPower: this.combatPower,
+  heroForm = this.fb.group<Hero>({
+    id: null,
+    name: '',
+    combatPower: 0,
   });
 
   color?: string | null;
 
   constructor(
+    private fb: NonNullableFormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private window: Window
   ) {}
 
   ngOnInit() {
     // id from required param
-    const id = Number(
-      this.route.snapshot.paramMap.get('id')!
-    );
+    const id = this.route.snapshot.paramMap.get('id')!;
 
     if (id) {
       this.heroService
@@ -67,12 +74,18 @@ export class HeroFormComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-}
-function tab(
-  arg0: (params: any) => void
-): import('rxjs').OperatorFunction<
-  import('@angular/router').Params,
-  unknown
-> {
-  throw new Error('Function not implemented.');
+
+  onSave(hero: Hero) {
+    this.isSubmitted = true;
+    this.heroService
+      .save(hero)
+      .subscribe(_ => this.router.navigate(['/heroes']));
+  }
+
+  canDeactive(): Observable<boolean> {
+    if (this.heroForm.dirty && !this.isSubmitted) {
+      return of(this.window.confirm('Are you sure ?'));
+    }
+    return of(true);
+  }
 }

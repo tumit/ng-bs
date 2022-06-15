@@ -6,6 +6,7 @@ import { ItemsComponent } from './items.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { ItemGuard } from './item.guard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,11 @@ import { ItemGuard } from './item.guard';
     ItemFormComponent,
     ItemViewComponent,
   ],
-  imports: [CommonModule, ItemsRoutingModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ItemsRoutingModule,
+  ],
   providers: [ItemGuard],
 })
 export class ItemsModule {}

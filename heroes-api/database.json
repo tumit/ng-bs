@@ -1,0 +1,65 @@
+{
+  "heroes": [
+    {
+      "id": 1001,
+      "name": "Dr. Nice",
+      "combatPower": 3
+    },
+    {
+      "id": 1002,
+      "name": "Bombasto",
+      "combatPower": 22
+    },
+    {
+      "id": 1003,
+      "name": "Celeritas",
+      "combatPower": 11
+    },
+    {
+      "id": 1004,
+      "name": "Magneta"
+    },
+    {
+      "id": 1005,
+      "name": "RubberMan"
+    },
+    {
+      "id": 1006,
+      "name": "Dynama"
+    },
+    {
+      "id": 1007,
+      "name": "Dr. IQ"
+    },
+    {
+      "id": 1008,
+      "name": "Magma"
+    },
+    {
+      "id": 1009,
+      "name": "Tornado"
+    }
+  ],
+  "items": [
+    {
+      "id": 101,
+      "name": "Apple",
+      "description": "recharge HP"
+    },
+    {
+      "id": 102,
+      "name": "Gold",
+      "description": "used in purchasing"
+    },
+    {
+      "id": 103,
+      "name": "Sword",
+      "description": "increase attack"
+    },
+    {
+      "id": 104,
+      "name": "Boots",
+      "description": "increase speed"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 export interface Hero {
-  id: number;
+  id: string | null;
   name: string;
   combatPower?: number;
 }

@@ -19,7 +19,7 @@ export interface LoginForm {
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  username = new FormControl('auser', {
+  username = new FormControl('aadmin', {
     nonNullable: true,
     validators: [Validators.required],
   });
