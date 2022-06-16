@@ -28,6 +28,7 @@ export const routes: Routes = [
       import('./items/items.module').then(
         m => m.ItemsModule
       ),
+    canLoad: [AuthGuard],
     data: { preload: true, delay: 100 },
   },
   {

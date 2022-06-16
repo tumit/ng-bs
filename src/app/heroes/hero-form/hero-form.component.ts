@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, Observable, of, switchMap } from 'rxjs';
 import { CanComponentDeactive } from 'src/app/guards/can-component-deactive';
+import { Item } from 'src/app/items/item';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -28,6 +29,8 @@ export class HeroFormComponent
   });
 
   color?: string | null;
+
+  items: Item[] = [];
 
   constructor(
     private fb: NonNullableFormBuilder,
@@ -69,6 +72,10 @@ export class HeroFormComponent
     //     filter(hero => !!hero)
     //   )
     //   .subscribe(hero => this.heroForm.patchValue(hero));
+
+    this.route.data.subscribe(
+      (data: any) => (this.items = data.items)
+    );
   }
 
   goBack() {
