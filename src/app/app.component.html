@@ -51,5 +51,56 @@
   <router-outlet></router-outlet>
 </div>
 
+<hr />
+<ul class="nav">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [routerLink]="[
+        {
+          outlets: {
+            left: ['show-woman'],
+            right: null
+          }
+        }
+      ]">
+      Woman
+    </a>
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [routerLink]="[
+        { outlets: { left: null, right: ['show-cat'] } }
+      ]">
+      Cat
+    </a>
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [routerLink]="[
+        {
+          outlets: {
+            left: ['show-woman'],
+            right: ['show-cat']
+          }
+        }
+      ]">
+      Woman & Cat
+    </a>
+  </li>
+</ul>
+
+<hr />
+<div class="d-flex">
+  <div class="m-1" style="min-width: 100px">
+    <router-outlet name="left"></router-outlet>
+  </div>
+  <div class="m-1" style="min-width: 100px">
+    <router-outlet name="right"></router-outlet>
+  </div>
+</div>
+
 <br />
 {{ authService.isLoggedIn }} | {{ authService.redirectURL }}
