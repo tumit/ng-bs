@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { CatComponent } from './pages/cat/cat.component';
+import { Cat2Component } from './pages/cat2/cat2.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { WomanComponent } from './pages/woman/woman.component';
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'show-cat',
     component: CatComponent,
+    outlet: 'right',
+  },
+  {
+    path: 'show-cat',
+    component: Cat2Component,
     outlet: 'right',
   },
   {
