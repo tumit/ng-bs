@@ -54,6 +54,13 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./demo/demo.module').then(m => m.DemoModule),
   },
+  {
+    path: 'school',
+    loadChildren: () =>
+      import('./school/school.module').then(
+        m => m.SchoolModule
+      ),
+  },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
