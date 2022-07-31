@@ -2,57 +2,25 @@
   <h5>Link by routerLink</h5>
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/demo/routing-and-navigation"
-        routerLinkActive="active">
-        Routing and Navigation
-      </a>
+      <a class="nav-link" routerLink="/demo/routing-and-navigation" routerLinkActive="active">Routing and Navigation</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/dashboard"
-        routerLinkActive="active">
-        Dashboard
-      </a>
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/heroes"
-        routerLinkActive="active">
-        Heroes
-      </a>
+      <a class="nav-link" routerLink="/heroes" routerLinkActive="active">Heroes</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/items"
-        routerLinkActive="active">
-        Items
-      </a>
+      <a class="nav-link" routerLink="/items" routerLinkActive="active">Items</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/school"
-        routerLinkActive="active">
-        School
-      </a>
+      <a class="nav-link" routerLink="/school" routerLinkActive="active">School</a>
     </li>
     <li *ngIf="!authService.isLoggedIn" class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/auth/login"
-        routerLinkActive="active">
-        Login
-      </a>
+      <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Login</a>
     </li>
     <li *ngIf="authService.isLoggedIn" class="nav-item">
-      <a class="nav-link" (click)="authService.logout()">
-        Logout
-      </a>
+      <a class="nav-link" (click)="authService.logout()">Logout</a>
     </li>
   </ul>
   <hr />
@@ -76,13 +44,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a
-      class="nav-link"
-      [routerLink]="[
-        { outlets: { left: null, right: ['show-cat'] } }
-      ]">
-      Cat
-    </a>
+    <a class="nav-link" [routerLink]="[{ outlets: { left: null, right: ['show-cat'] } }]">Cat</a>
   </li>
   <li class="nav-item">
     <a

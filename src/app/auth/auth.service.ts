@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  BehaviorSubject,
-  filter,
-  Observable,
-  of,
-  throwError,
-} from 'rxjs';
+import { BehaviorSubject, filter, Observable, of, throwError } from 'rxjs';
 import { User } from './user';
 
 //
@@ -21,39 +15,26 @@ export class AuthService {
   isLoggedIn = false;
   redirectURL = '';
 
-  private loggedInUser$ = new BehaviorSubject<User>(
-    {} as User
-  );
+  private loggedInUser$ = new BehaviorSubject<User>({} as User);
 
   constructor(private router: Router) {
-    const storedUser =
-      sessionStorage.getItem(LOGGED_IN_USER);
+    const storedUser = sessionStorage.getItem(LOGGED_IN_USER);
     if (storedUser) {
       this.isLoggedIn = true;
-      this.loggedInUser$.next(
-        JSON.parse(storedUser) as User
-      );
+      this.loggedInUser$.next(JSON.parse(storedUser) as User);
     }
 
     // store logged user when new logged user is coming
     this.loggedInUser
       .pipe(filter(user => !!user.username))
-      .subscribe(loggedInUser =>
-        sessionStorage.setItem(
-          LOGGED_IN_USER,
-          JSON.stringify(loggedInUser)
-        )
-      );
+      .subscribe(loggedInUser => sessionStorage.setItem(LOGGED_IN_USER, JSON.stringify(loggedInUser)));
   }
 
   get loggedInUser(): Observable<User> {
     return this.loggedInUser$.asObservable();
   }
 
-  login(loginForm: {
-    username?: string;
-    password?: string;
-  }): Observable<User> {
+  login(loginForm: { username?: string; password?: string }): Observable<User> {
     if (loginForm.username !== loginForm.password) {
       return throwError(() => ({
         status: 401,
@@ -62,9 +43,7 @@ export class AuthService {
     }
 
     this.isLoggedIn = true;
-    const roles = loginForm.username?.includes('admin')
-      ? ['ADMIN']
-      : ['USER'];
+    const roles = loginForm.username?.includes('admin') ? ['ADMIN'] : ['USER'];
 
     this.loggedInUser$.next({
       username: loginForm.username,

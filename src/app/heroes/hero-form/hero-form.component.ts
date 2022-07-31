@@ -1,10 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-} from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, Observable, of, switchMap } from 'rxjs';
 import { CanComponentDeactive } from 'src/app/guards/can-component-deactive';
@@ -17,9 +13,7 @@ import { HeroService } from '../hero.service';
   templateUrl: './hero-form.component.html',
   styleUrls: ['./hero-form.component.scss'],
 })
-export class HeroFormComponent
-  implements OnInit, CanComponentDeactive
-{
+export class HeroFormComponent implements OnInit, CanComponentDeactive {
   isSubmitted = false;
 
   heroForm = this.fb.group<Hero>({
@@ -46,9 +40,7 @@ export class HeroFormComponent
     const id = this.route.snapshot.paramMap.get('id')!;
 
     if (id) {
-      this.heroService
-        .getHero(id)
-        .subscribe(h => this.heroForm.patchValue(h));
+      this.heroService.getHero(id).subscribe(h => this.heroForm.patchValue(h));
     }
 
     // color from optional params
@@ -73,9 +65,7 @@ export class HeroFormComponent
     //   )
     //   .subscribe(hero => this.heroForm.patchValue(hero));
 
-    this.route.data.subscribe(
-      (data: any) => (this.items = data.items)
-    );
+    this.route.data.subscribe((data: any) => (this.items = data.items));
   }
 
   goBack() {
@@ -84,9 +74,7 @@ export class HeroFormComponent
 
   onSave(hero: Hero) {
     this.isSubmitted = true;
-    this.heroService
-      .save(hero)
-      .subscribe(_ => this.router.navigate(['/heroes']));
+    this.heroService.save(hero).subscribe(_ => this.router.navigate(['/heroes']));
   }
 
   canDeactive(): Observable<boolean> {

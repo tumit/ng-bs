@@ -1,32 +1,16 @@
 <p>hero-form works!</p>
-<form
-  [formGroup]="heroForm"
-  (ngSubmit)="onSave(this.heroForm.getRawValue())">
+<form [formGroup]="heroForm" (ngSubmit)="onSave(this.heroForm.getRawValue())">
   <label class="form-label" for="name">Hero name</label>
-  <input
-    type="text"
-    class="form-control"
-    id="name"
-    formControlName="name" />
-  <label class="form-label" for="combatPower">
-    Combat Power
-  </label>
-  <input
-    type="number"
-    class="form-control"
-    id="combatPower"
-    formControlName="combatPower" />
-  <button class="btn btn-primary my-2" type="submit">
-    Save
-  </button>
+  <input type="text" class="form-control" id="name" formControlName="name" />
+  <label class="form-label" for="combatPower">Combat Power</label>
+  <input type="number" class="form-control" id="combatPower" formControlName="combatPower" />
+  <button class="btn btn-primary my-2" type="submit">Save</button>
 </form>
 <hr />
 <span [ngStyle]="{ color: color ? color : 'black' }">
   {{ heroForm.value | json }}
 </span>
 <hr />
-<button class="btn btn-secondary" (click)="goBack()">
-  Back
-</button>
+<button class="btn btn-secondary" (click)="goBack()">Back</button>
 <hr />
 {{ items | json }}

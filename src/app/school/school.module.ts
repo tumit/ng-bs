@@ -7,10 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [StudentFormComponent, SchoolComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SchoolRoutingModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SchoolRoutingModule],
 })
 export class SchoolModule {}

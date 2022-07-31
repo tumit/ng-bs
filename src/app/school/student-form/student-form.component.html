@@ -8,10 +8,34 @@
     <input
       type="text"
       class="form-control"
+      [ngClass]="{ 'is-invalid': studentForm.controls.name.errors }"
       formControlName="name" />
+    <div class="invalid-feedback">Name is required</div>
   </div>
-  Classmates:
+
+  <!-- Classmates:
   <div formArrayName="classmates">
-    <div *ngFor="let cm of classmates; index as i"></div>
+    <div *ngFor="let cm of studentForm.controls.classmates.controls; index as i">
+      <input type="text" class="form-control" [formControlName]="i" />
+    </div>
+  </div> -->
+
+  Classmates: {{ studentForm.controls.classmates.errors | json }}
+  <div [ngClass]="{ 'is-invalid': studentForm.controls.classmates.errors }">
+    <div *ngFor="let cm of studentForm.controls.classmates.controls">
+      <input type="text" class="form-control" [formControl]="cm" />
+    </div>
+    <div *ngIf="studentForm.controls.classmates.hasError('required')" class="d-inline invalid-feedback">
+      Classmate is required
+    </div>
+    <div *ngIf="studentForm.controls.classmates.hasError('maxlength')" class="d-inline invalid-feedback">
+      Classmate is over max length
+    </div>
+  </div>
+
+  <div>
+    <label for="newClassmate">Add Classmate</label>
+    <input type="text" class="form-control" [formControl]="newClassmate" />
+    <button class="btn btn-primary" (click)="addClassmate()">Add</button>
   </div>
 </form>

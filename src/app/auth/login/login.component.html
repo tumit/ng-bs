@@ -1,26 +1,16 @@
 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
   <label class="form-label" for="username">Username</label>
-  <input
-    class="form-control"
-    type="text"
-    id="username"
-    formControlName="username" />
+  <input class="form-control" type="text" id="username" formControlName="username" />
   <label class="form-label" for="password">Password</label>
+  <input class="form-control" type="password" id="password" formControlName="password" />
   <input
-    class="form-control"
-    type="password"
-    id="password"
-    formControlName="password" />
+    class="form-control laserCode"
+    [inputMask]="laserCodeInputMask"
+    [formControl]="laserCode"
+    placeholder="___-_______-__" />
   <div class="d-flex">
-    <button class="btn btn-primary m-2" type="submit">
-      Login
-    </button>
-    <button
-      class="btn btn-secondary m-2"
-      type="button"
-      (click)="onReset()">
-      Reset
-    </button>
+    <button class="btn btn-primary m-2" type="submit">Login</button>
+    <button class="btn btn-secondary m-2" type="button" (click)="onReset()">Reset</button>
   </div>
 </form>
 <hr />

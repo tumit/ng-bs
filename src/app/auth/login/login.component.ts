@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { createMask } from '@ngneat/input-mask';
 import { Observable, tap } from 'rxjs';
 import { AuthService } from '../auth.service';
 
@@ -35,20 +32,18 @@ export class LoginComponent {
 
   termsAndConsFormControl = new FormControl<boolean>(false);
 
-  constructor(
-    public authService: AuthService,
-    private router: Router
-  ) {}
+  laserCode = new FormControl<string>('');
+
+  laserCodeInputMask = createMask('AA9-9999999-99');
+
+  constructor(public authService: AuthService, private router: Router) {}
 
   onLogin() {
     this.authService
       .login(this.loginForm.value)
       .pipe(tap(user => console.log('user', user)))
       .subscribe({
-        next: _ =>
-          this.router.navigate([
-            this.authService.redirectURL,
-          ]),
+        next: _ => this.router.navigate([this.authService.redirectURL]),
         error: err => console.log('err', err),
       });
   }

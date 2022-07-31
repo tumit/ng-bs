@@ -11,8 +11,7 @@ import { AppPreloadingStrategy } from './preloading/app-preloading.service';
 export const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () =>
-      import('./auth/auth.module').then(m => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     data: { preload: false },
   },
   { path: 'dashboard', component: DashboardComponent },
@@ -34,32 +33,22 @@ export const routes: Routes = [
   {
     path: 'heroes',
     canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./heroes/hero.module').then(
-        m => m.HeroModule
-      ),
+    loadChildren: () => import('./heroes/hero.module').then(m => m.HeroModule),
     data: { preload: true, delay: 5000 },
   },
   {
     path: 'items',
-    loadChildren: () =>
-      import('./items/items.module').then(
-        m => m.ItemsModule
-      ),
+    loadChildren: () => import('./items/items.module').then(m => m.ItemsModule),
     canLoad: [AuthGuard],
     data: { preload: true, delay: 100 },
   },
   {
     path: 'demo',
-    loadChildren: () =>
-      import('./demo/demo.module').then(m => m.DemoModule),
+    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule),
   },
   {
     path: 'school',
-    loadChildren: () =>
-      import('./school/school.module').then(
-        m => m.SchoolModule
-      ),
+    loadChildren: () => import('./school/school.module').then(m => m.SchoolModule),
   },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },

@@ -8,10 +8,6 @@ import { HeroesComponent } from './heroes.component';
 
 @NgModule({
   declarations: [HeroesComponent, HeroFormComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HeroRoutingModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, HeroRoutingModule],
 })
 export class HeroModule {}

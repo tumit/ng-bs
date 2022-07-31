@@ -9,16 +9,8 @@ import { ItemGuard } from './item.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ItemsComponent,
-    ItemFormComponent,
-    ItemViewComponent,
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    ItemsRoutingModule,
-  ],
+  declarations: [ItemsComponent, ItemFormComponent, ItemViewComponent],
+  imports: [CommonModule, ReactiveFormsModule, ItemsRoutingModule],
   providers: [ItemGuard],
 })
 export class ItemsModule {}

@@ -12,11 +12,7 @@ import { ItemService } from './item.service';
 export class ItemsComponent implements OnInit {
   items$!: Observable<Item[]>;
 
-  constructor(
-    private itemService: ItemService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private itemService: ItemService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.items$ = this.itemService.getItems();

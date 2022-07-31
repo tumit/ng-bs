@@ -16,20 +16,12 @@ export class ItemFormComponent implements OnInit {
     description: '',
   });
 
-  constructor(
-    private fb: NonNullableFormBuilder,
-    private route: ActivatedRoute,
-    private itemService: ItemService
-  ) {}
+  constructor(private fb: NonNullableFormBuilder, private route: ActivatedRoute, private itemService: ItemService) {}
 
   ngOnInit(): void {
-    const id = Number(
-      this.route.snapshot.paramMap.get('id')!
-    );
+    const id = Number(this.route.snapshot.paramMap.get('id')!);
 
-    this.itemService
-      .getItem(id)
-      .subscribe(item => this.itemForm.setValue(item));
+    this.itemService.getItem(id).subscribe(item => this.itemForm.setValue(item));
   }
 
   onSave(item: Item) {

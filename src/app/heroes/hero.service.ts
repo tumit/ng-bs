@@ -27,10 +27,7 @@ export class HeroService {
   save(hero: Hero): Observable<Hero> {
     // found id is update
     if (hero.id) {
-      return this.httpClient.put<Hero>(
-        this.API + '/' + hero.id,
-        hero
-      );
+      return this.httpClient.put<Hero>(this.API + '/' + hero.id, hero);
     }
 
     // not found is insert

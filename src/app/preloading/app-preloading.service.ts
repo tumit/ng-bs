@@ -3,13 +3,8 @@ import { PreloadingStrategy, Route } from '@angular/router';
 import { mergeMap, Observable, of, timer } from 'rxjs';
 
 @Injectable()
-export class AppPreloadingStrategy
-  implements PreloadingStrategy
-{
-  preload(
-    route: Route,
-    load: () => Observable<any>
-  ): Observable<any> {
+export class AppPreloadingStrategy implements PreloadingStrategy {
+  preload(route: Route, load: () => Observable<any>): Observable<any> {
     // console.log('preload ', route);
     if (route.data && route.data['preload']) {
       let delay: number = route.data['delay'];
