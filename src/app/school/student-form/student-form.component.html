@@ -19,7 +19,7 @@
       <input type="text" class="form-control" [formControlName]="i" />
     </div>
   </div> -->
-
+  <hr />
   Classmates: {{ studentForm.controls.classmates.errors | json }}
   <div [ngClass]="{ 'is-invalid': studentForm.controls.classmates.errors }">
     <div *ngFor="let cm of studentForm.controls.classmates.controls">
@@ -32,6 +32,13 @@
       Classmate is over max length
     </div>
   </div>
+
+  <hr />
+
+  {{ technology.getRawValue() | json }}
+  <select class="form-select" [formControl]="technology" [compareWith]="compareTechnology">
+    <option [ngValue]="opt" *ngFor="let opt of technologies">{{ opt.name }}</option>
+  </select>
 
   <div>
     <label for="newClassmate">Add Classmate</label>
