@@ -8,6 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Cat2Component } from './pages/cat2/cat2.component';
 import { InputMaskModule } from '@ngneat/input-mask';
 import { CachingInterceptor } from './interceptors/caching.interceptor';
+import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent, DashboardComponent, Cat2Component],
@@ -15,6 +16,7 @@ import { CachingInterceptor } from './interceptors/caching.interceptor';
   providers: [
     { provide: Window, useValue: window },
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
