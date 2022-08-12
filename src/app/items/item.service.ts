@@ -19,4 +19,8 @@ export class ItemService {
   getItem(id: number): Observable<Item> {
     return this.httpClient.get<Item>(this.API + '/' + id);
   }
+
+  getExtraItems(): Observable<Item[]> {
+    return this.httpClient.get<Item[]>(this.API + '/extra');
+  }
 }

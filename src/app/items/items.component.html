@@ -1,4 +1,9 @@
 <p>items works!</p>
+<label for="default">Default</label>
+<input type="radio" id="default" value="D" [formControl]="itemTypeFormControl">
+<label for="extra">Extra</label>
+<input type="radio" id="extra" value="E" [formControl]="itemTypeFormControl">
+
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let item of items$ | async">
     {{ item.name }}
